@@ -5,21 +5,20 @@ import { FONTS } from "../../themes/fonts";
 export const style = StyleSheet.create({
 	container: {
 		flex: 1,
-		height: 1000,
 		paddingTop: getStatusBarHeight() + 17,
-		backgroundColor: "#FFFFFF",
-		alignItems: "center"
+		backgroundColor: "#FFFFFF"
 	},
 
 	containerBody: {
 		width: "100%",
-		height: "100%",
+		height: 700,
 		backgroundColor: "#FFFFFF",
 		borderTopLeftRadius: 50,
 		borderTopRightRadius: 50,
 		position: "relative",
 		top: -40,
 		alignItems: "center"
+
 	},
 
 	inputGroup: {
@@ -37,5 +36,17 @@ export const style = StyleSheet.create({
 		padding: 10,
 		borderColor: "#B73058",
 		borderWidth: 2,
+	},
+
+	button: {
+		alignItems: "center",
+		width: "80%",
+		backgroundColor: "#E06C88",
+		padding: 20,
+		borderRadius: 10
+	},
+	buttonText: {
+		fontFamily: FONTS.BOLD,
+		color: "#FFFFFF"
 	}
 });

@@ -1,17 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView } from "react-native";
-import { useNavigate } from "react-router-dom";
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 import { RegisterHeader, MealList } from "../../components";
 import { style } from "./style";
 
 
 export function Register() {
-	//const native = useNavigate();
-
 
 	return(
-		<View style={style.container}>
+		<ScrollView style={style.container}>
 			<StatusBar style="dark" translucent backgroundColor="transparent" />
 			<RegisterHeader />
 
@@ -35,11 +32,20 @@ export function Register() {
 						placeholder="solte o verbo para o seu/sua amado(a)"
 						placeholderTextColor="#000000"
 						multiline
+						keyboardAppearance="dark"
 						maxLength={140}
-						style={style.input}
+						numberOfLines={5}
+						style={[style.input, {textAlignVertical: "top"}]}
 					/>
 				</View>
+
+				<TouchableOpacity
+					style={style.button}
+					activeOpacity={0.7}
+				>
+					<Text style={style.buttonText}>ENVIAR CORREIO</Text>
+				</TouchableOpacity>
 			</View>
-		</View>
+		</ScrollView>
 	);
 }

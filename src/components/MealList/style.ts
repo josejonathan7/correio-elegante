@@ -22,7 +22,8 @@ export const style = StyleSheet.create({
 	viewGroup: {
 		width: 70,
 		height: 70,
-		borderRadius: 10
+		borderRadius: 10,
+		alignItems: "center"
 	},
 
 	viewGroupSecond: {
@@ -34,5 +35,10 @@ export const style = StyleSheet.create({
 	image: {
 		width: "80%",
 		height: "80%"
+	},
+	focused: {
+		borderColor: "#B73058",
+		borderWidth: 3,
+		borderRadius: 10
 	}
 });

@@ -1,5 +1,5 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 import fastFood from "../../../assets/fast-food.png";
 import champagne from "../../../assets/champagne.png";
@@ -10,13 +10,46 @@ import frenchFries from "../../../assets/french-fries.png";
 import {style} from "./style";
 
 export function MealList() {
+	const [focusedOne, setFocusedOne] = useState(false);
+	const [focusedTwo, setFocusedTwo] = useState(false);
+	const [focusedThree, setFocusedThree] = useState(false);
+	const [focusedFour, setFocusedFour] = useState(false);
+
+	const focusedOneFunction = () => {
+		setFocusedOne(true);
+		setFocusedTwo(false);
+		setFocusedThree(false);
+		setFocusedFour(false);
+	};
+
+	const focusedTwoFunction = () => {
+		setFocusedOne(false);
+		setFocusedTwo(true);
+		setFocusedThree(false);
+		setFocusedFour(false);
+	};
+
+	const focusedThreeFunction = () => {
+		setFocusedOne(false);
+		setFocusedTwo(false);
+		setFocusedThree(true);
+		setFocusedFour(false);
+	};
+
+	const focusedFourFunction = () => {
+		setFocusedOne(false);
+		setFocusedTwo(false);
+		setFocusedThree(false);
+		setFocusedFour(true);
+	};
 
 	return (
 		<View style={style.mealContainer}>
 			<Text style={style.mealTitle} >Escolha uma refeição abaixo</Text>
 			<View style={style.mealList}>
 				<TouchableOpacity
-					style={{paddingRight: 20}}
+					style={[focusedOne ? style.focused : {}, {marginRight: 20}]}
+					onPress={() => focusedOneFunction()}
 				>
 					<LinearGradient
 						colors={["#FFFFFF", "#DCDCDC"]}
@@ -29,7 +62,8 @@ export function MealList() {
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					style={{paddingRight: 20}}
+					style={[focusedTwo ? style.focused : {}, {marginRight: 20}]}
+					onPress={() => focusedTwoFunction()}
 				>
 					<LinearGradient
 						colors={["#FFFFFF", "#DCDCDC"]}
@@ -43,7 +77,8 @@ export function MealList() {
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					style={{paddingRight: 20}}
+					style={[focusedThree ? style.focused : {}, {marginRight: 20}]}
+					onPress={() => focusedThreeFunction()}
 				>
 					<LinearGradient
 						colors={["#FFFFFF", "#DCDCDC"]}
@@ -55,12 +90,15 @@ export function MealList() {
 					</LinearGradient>
 				</TouchableOpacity>
 
-				<TouchableOpacity>
+				<TouchableOpacity
+					style={focusedFour ? style.focused : {}}
+					onPress={() => focusedFourFunction()}
+				>
 					<LinearGradient
 						colors={["#FFFFFF", "#DCDCDC"]}
 						start={{ x: 0, y: 0 }}
 						end={{ x: 1, y: 1 }}
-						style={[style.viewGroup, style.viewGroupSecond]}
+						style={[style.viewGroup, {padding: 5, justifyContent: "center"}]}
 					>
 						<Image source={frenchFries} style={style.image} />
 					</LinearGradient>
