@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { FONTS } from "../../themes/fonts";
 
 export const style = StyleSheet.create({
 	container: {
@@ -10,72 +11,44 @@ export const style = StyleSheet.create({
 	},
 	imageViewContainer: {
 		width: "100%",
-		height: "50%",
+		height: "55%",
 		backgroundColor: "#B73058",
 		borderTopLeftRadius: 50,
 		borderTopRightRadius: 50,
 		alignItems: "center"
 	},
-	imageView: {
-		width: "80%",
-		height: "80%",
-		marginTop: 50,
-		borderRadius: 200,
-		backgroundColor: "#FFFFFF",
-		alignItems: "center",
-		padding: 10,
-		display: "flex"
-
-	},
-	viewGroupFirst: {
-		width: 70,
-		height: 70,
-		backgroundColor: "#9CABC2",
-		opacity: 0.7,
-		borderRadius: 10,
-		alignItems: "center",
-		padding: 5,
+	textContainer: {
+		width: "100%",
+		height: "100%",
+		borderTopLeftRadius: 50,
+		borderTopRightRadius: 50,
 		position: "relative",
-		left: -60,
-		top: 10
+		top: -40,
+		backgroundColor: "#FFFFFF"
 	},
-	viewGroupSecond: {
-		display: "flex",
-		flexDirection: "row",
-		width: 70,
-		height: 70,
-		backgroundColor: "#9CABC2",
-		opacity: 0.7,
-		borderRadius: 10,
+	textView: {
+		marginTop: 100,
 		alignItems: "center",
-		padding: 5,
-		position: "relative",
-		left: 100,
 	},
-	viewGroupThree: {
-		width: 100,
-		height: 80,
-		opacity: 0.7,
-		borderRadius: 10,
+	title: {
+		fontFamily: FONTS.BOLD,
+		fontSize: 28,
+		padding: 20
+	},
+	description: {
+		fontFamily: FONTS.REGULAR,
+		color: "#9CABC2",
+		padding: 10
+	},
+	button: {
 		alignItems: "center",
-		position: "relative",
-		top: -10
+		width: "50%",
+		backgroundColor: "#E06C88",
+		padding: 20,
+		borderRadius: 10
 	},
-	viewGroupFour: {
-		display: "flex",
-		flexDirection: "row",
-		width: 70,
-		height: 70,
-		backgroundColor: "#9CABC2",
-		opacity: 0.7,
-		borderRadius: 10,
-		alignItems: "center",
-		padding: 5,
-		position: "relative",
-		left: -60,
-	},
-	image: {
-		width: "80%",
-		height: "80%"
+	buttonText: {
+		fontFamily: FONTS.BOLD,
+		color: "#FFFFFF"
 	}
 });
