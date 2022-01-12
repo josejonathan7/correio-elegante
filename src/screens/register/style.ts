@@ -40,8 +40,7 @@ export const style = StyleSheet.create({
 
 	button: {
 		alignItems: "center",
-		width: "80%",
-		backgroundColor: "#E06C88",
+		width: "100%",
 		padding: 20,
 		borderRadius: 10
 	},

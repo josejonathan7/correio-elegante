@@ -9,7 +9,11 @@ import wine from "../../../assets/wine.png";
 import frenchFries from "../../../assets/french-fries.png";
 import {style} from "./style";
 
-export function MealList() {
+interface Props {
+	setMeal: (arg0: string) => void
+}
+
+export function MealList({setMeal}: Props) {
 	const [focusedOne, setFocusedOne] = useState(false);
 	const [focusedTwo, setFocusedTwo] = useState(false);
 	const [focusedThree, setFocusedThree] = useState(false);
@@ -20,6 +24,7 @@ export function MealList() {
 		setFocusedTwo(false);
 		setFocusedThree(false);
 		setFocusedFour(false);
+		setMeal("hamburguer");
 	};
 
 	const focusedTwoFunction = () => {
@@ -27,6 +32,7 @@ export function MealList() {
 		setFocusedTwo(true);
 		setFocusedThree(false);
 		setFocusedFour(false);
+		setMeal("champanhe");
 	};
 
 	const focusedThreeFunction = () => {
@@ -34,6 +40,7 @@ export function MealList() {
 		setFocusedTwo(false);
 		setFocusedThree(true);
 		setFocusedFour(false);
+		setMeal("queijo");
 	};
 
 	const focusedFourFunction = () => {
@@ -41,6 +48,7 @@ export function MealList() {
 		setFocusedTwo(false);
 		setFocusedThree(false);
 		setFocusedFour(true);
+		setMeal("batata");
 	};
 
 	return (
