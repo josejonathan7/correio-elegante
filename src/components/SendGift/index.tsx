@@ -16,8 +16,6 @@ interface Props {
 
 export function SendGift ({type}: Props) {
 
-
-
 	return (
 		<>
 			{

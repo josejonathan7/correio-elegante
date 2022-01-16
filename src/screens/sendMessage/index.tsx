@@ -26,8 +26,6 @@ export function SendMessage () {
 		setUser(userLocation);
 	});
 
-	console.log("location: ", location.state);
-
 	return (
 		<View style={style.container}>
 			<StatusBar style="dark" translucent backgroundColor="#FFFFFF" />
