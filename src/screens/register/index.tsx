@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 import { useNavigate } from "react-router-native";
 import { useForm } from "react-hook-form";
@@ -17,10 +17,20 @@ interface Props {
 
 export function Register() {
 	const navigate = useNavigate();
-	const [ user, setUser ] = useState<Props>();
 	const { register, handleSubmit, setValue } = useForm();
 	const [ meal, setMeal ] = useState("");
 	const [ name, setName ] = useState("");
+	const refInput = useRef(null);
+	const refInputTwoo = useRef(null);
+
+	const getFocusInput = () => {
+		refInput.current!.focus();
+	};
+
+	const getFocusInputTwoo = () => {
+		refInputTwoo.current!.focus();
+	};
+
 
 	useEffect(() => {
 		register("name");
@@ -51,9 +61,8 @@ export function Register() {
 				abortEarly: false
 			}) as Props;
 
-			setUser(validatedData);
 			navigate("/success", {
-				state: user
+				state: validatedData
 			});
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -77,7 +86,7 @@ export function Register() {
 	return(
 		<ScrollView style={style.container}>
 			<StatusBar style="dark" translucent backgroundColor="#FFFFFF" />
-			<RegisterHeader setName={setName} />
+			<RegisterHeader setName={setName} getSubmit={getFocusInput} />
 
 			<View style={style.containerBody}>
 
@@ -91,6 +100,10 @@ export function Register() {
 						style={style.input}
 						keyboardAppearance="dark"
 						onChangeText={text => setValue("email", text)}
+						autoCapitalize="none"
+						returnKeyType="next"
+						ref={refInput}
+						onSubmitEditing={() => {getFocusInputTwoo();}}
 					/>
 				</View>
 
@@ -105,6 +118,7 @@ export function Register() {
 						numberOfLines={5}
 						style={[style.input, {textAlignVertical: "top"}]}
 						onChangeText={text => setValue("message", text)}
+						ref={refInputTwoo}
 					/>
 				</View>
 

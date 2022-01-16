@@ -1,17 +1,32 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { View, Text, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text } from "react-native";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { style } from "./style";
 import { LinearGradient } from "expo-linear-gradient";
-import champagne from "../../../assets/champagne.png";
-import lollipop from "../../../assets/lollipop.png";
-import { useNavigate } from "react-router-native";
+import { useLocation, useNavigate } from "react-router-native";
+import { SendGift } from "../../components";
 
-export function SendMessage (props) {
-	console.log(props);
+interface Props {
+	name?: string;
+	email: string;
+	message: string;
+	meal: "hamburguer" | "champanhe" | "queijo" | "batata";
+}
 
+export function SendMessage () {
 	const navigate = useNavigate();
+	const location = useLocation();
+	const [user, setUser] = useState<Props>();
+
+	useEffect(() => {
+
+		const userLocation = location.state as Props;
+
+		setUser(userLocation);
+	});
+
+	console.log("location: ", location.state);
 
 	return (
 		<View style={style.container}>
@@ -35,37 +50,21 @@ export function SendMessage (props) {
 					start={{x: 0, y: 0}}
 					end={{x: 1, y: 1}}
 				>
-					<LinearGradient
-						colors={["#FFFFFF", "#DCDCDC"]}
-						start={{ x: 0, y: 0 }}
-						end={{ x: 1, y: 1 }}
-						style={[style.viewGroup, style.viewGroupSecond]}
-					>
-						<Image style={{width: "25%", height: "80%", zIndex: 1, left: 20}} source={champagne} />
-						<Image style={{width: "60%", height: "60%", left: 5, zIndex: 0, position: "relative", top: -5}} source={lollipop} />
-					</LinearGradient>
+
+					<SendGift type={user?.meal ? user.meal : "error"} />
 
 					<View style={style.textContainer}>
-						<View style={{ left: -80}}>
-							<Text style={style.text} >De: Administrador Secreto</Text>
+						<View style={{ left: -10}}>
+							<Text style={style.text} >De: { user?.name ? user.name : "Administrador Secreto" }</Text>
 						</View>
 
-						<View >
-							<Text style={style.text} >Para: Você</Text>
+						<View style={{right: -80}}>
+							<Text style={style.text} >Para: { user?.email ? user.email : "Você" }</Text>
 						</View>
 
 					</View>
 
-					<LinearGradient
-						colors={["#FFFFFF", "#DCDCDC"]}
-						start={{ x: 0, y: 0 }}
-						end={{ x: 1, y: 1 }}
-						style={[style.viewGroup, style.viewGroupSecond]}
-					>
-						<Image style={{width: "25%", height: "80%", zIndex: 1, left: 20}} source={champagne} />
-						<Image style={{width: "60%", height: "60%", left: 5, zIndex: 0, position: "relative", top: -5}} source={lollipop} />
-					</LinearGradient>
-
+					<SendGift type={user?.meal ? user.meal : "error"} />
 
 				</LinearGradient>
 

@@ -6,9 +6,10 @@ import { style } from "./style";
 
 interface Props {
 	setName: (arg0: string) => void;
+	getSubmit: () => void;
 }
 
-export function RegisterHeader({setName}: Props) {
+export function RegisterHeader({ setName, getSubmit }: Props) {
 	const navigate = useNavigate();
 
 	return (
@@ -21,6 +22,8 @@ export function RegisterHeader({setName}: Props) {
 				placeholderTextColor="#E7DFDD"
 				style={style.inputHeader}
 				onChangeText={text => setName(text)}
+				returnKeyType="done"
+				onSubmitEditing={() => {getSubmit();}}
 			/>
 		</View>
 	);

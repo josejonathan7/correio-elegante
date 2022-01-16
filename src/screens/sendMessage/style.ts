@@ -54,19 +54,6 @@ export const style = StyleSheet.create({
 		transform: [{rotate: "270deg"}],
 		color: "#E7DFDD",
 		fontWeight: "bold",
-		fontSize: 18
-	},
-
-	viewGroupSecond: {
-		display: "flex",
-		flexDirection: "row",
-		alignItems: "center",
-		padding: 5,
-	},
-	viewGroup: {
-		width: 100,
-		height: 100,
-		borderRadius: 50,
-		alignItems: "center"
+		fontSize: 13
 	},
 });

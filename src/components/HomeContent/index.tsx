@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-native";
 import {style} from "./style";
 
 export function HomeContent () {
